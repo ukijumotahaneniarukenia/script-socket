@@ -1,0 +1,23 @@
+{
+  "name": "script-socket",
+  "version": "1.0.0",
+  "description": "- https://postd.cc/you-might-not-need-a-websocket/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ukijumotahaneniarukenia/script-socket.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ukijumotahaneniarukenia/script-socket/issues"
+  },
+  "homepage": "https://github.com/ukijumotahaneniarukenia/script-socket#readme",
+  "dependencies": {
+    "ws": "^7.4.3"
+  }
+}

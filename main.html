@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="kick-web-socket-event">Hello</button>
+
+    <script>
+      const webSocket = new WebSocket("ws://127.0.0.1:5001");
+
+      // 接続が開かれたときに呼び出されるイベント
+      webSocket.addEventListener("open", (event) => {
+        console.log(`readyState:${webSocket.readyState}`);
+        console.log("open", event);
+      });
+
+      // サーバーからメッセージを受信したときに呼び出されるイベント
+      webSocket.addEventListener("message", (event) => {
+        console.log(`readyState:${webSocket.readyState} webSocketUrl: ${webSocket.url}`);
+        // 単一文字列の送受信ができるため予め送受信電文のパターンを決めておく必要がある。
+        // パースパタンを定義するため
+        try {
+          const { hoge, fuga, piyo } = JSON.parse(event.data);
+          console.log("hoge, fuga, piyo", hoge, fuga, piyo);
+        } catch (error) {
+          console.log("message", event);
+          console.log("message data", event.data);
+        }
+      });
+
+      // 接続が閉じられたときに呼び出されるイベント
+      webSocket.addEventListener("close", (event) => {
+        console.log(`readyState:${webSocket.readyState} webSocketUrl: ${webSocket.url}`);
+        console.log("close", event);
+      });
+
+      webSocket.addEventListener("error", (event) => {
+        console.log(`readyState:${webSocket.readyState} webSocketUrl: ${webSocket.url}`);
+        console.log("error", event);
+      });
+
+      const targetKickWebSocketEventButton = document.getElementById(
+        "kick-web-socket-event"
+      );
+
+      // 異なるデータを複数回送信できる
+      targetKickWebSocketEventButton.addEventListener("click", (event) => {
+        console.log(`readyState:${webSocket.readyState} webSocketUrl: ${webSocket.url}`);
+        // サーバーへ送信
+        webSocket.send("hello");
+
+        // サーバーへ送信
+        webSocket.send(
+          JSON.stringify({
+            name: "alice",
+            age: 25,
+          })
+        );
+      });
+    </script>
+  </body>
+</html>
