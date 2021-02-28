@@ -10,6 +10,10 @@
 
 - https://github.com/sidorares/crmux/blob/master/crmux.js
 
+- https://techblog.yahoo.co.jp/javascript/nodejs/online_game_architecture_by_socketio/
+
+- realm mongoのレポにチュートリアルあり
+  - https://github.com/mongodb/realm-practice
 
 ```
 $ rm -rf /tmp/unko
